@@ -1,0 +1,24 @@
+<div class="boards-list">
+  <div class="boards-list__title">{{title}}</div>
+  <div class="boards-list__boards">
+    <div [routerLink]="'/boards/'+board.id"
+         [ngStyle]="{'background' : board.imgUrl ? 'url('+board.imgUrl+')' : board.color}" class="boards-list__board"
+         *ngFor="let board of (boards |async) | paginate: { id:'discuss', itemsPerPage: pageLimit, currentPage: page, totalItems: totalCount }">
+    <div class="boards-list__board-title">{{board.title}}</div>
+  </div>
+  <div *ngIf="canCreate" class="boards-list__board create-new-board" (click)="dispatchCreateDialog()">
+    <div class="create-new-board__title">Создать доску</div>
+  </div>
+</div>
+</div>
+
+<pagination-controls *ngIf="hasPaginator" id="discuss" (pageChange)="boardsPageChanges($event)" maxSize="7"
+                     directionLinks="false" autoHide="true" responsive="true">
+</pagination-controls>
+
+<swal #addBoard>
+  <ng-container *swalPortal>
+    <app-create-board-popup (close)="closeClick()">
+    </app-create-board-popup>
+  </ng-container>
+</swal>

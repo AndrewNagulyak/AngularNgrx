@@ -1,0 +1,244 @@
+
+app-sign-up {
+  background: white;
+  height: 100vh;
+  width: 100%;
+  overflow:auto;
+
+
+  ngx-intl-tel-input {
+    width: 100%;
+  }
+
+  .intl-tel-input, .iti {
+    width: 100%;
+  }
+
+  .intl-tel-input.allow-dropdown .flag-container:hover .selected-flag {
+    background-color: #fff;
+  }
+
+  .intl-tel-input.separate-dial-code .selected-flag {
+    background-color: #fff;
+  }
+
+  .custom {
+    background-color: #FBFCFD;
+    width: 100%;
+    height: 38px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  .label-fields {
+    width: 25%;
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  .register-title {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .reg-sub {
+    color: rgba(0, 0, 0, 0.54);
+    text-align: center;
+  }
+
+  .cancel-button {
+    border: 1px solid;
+  }
+
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+
+    .form-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .error_pass {
+      color: red;
+      margin-bottom: 15px;
+    }
+
+    .form-pr {
+      display: flex;
+
+      .privacy {
+        span, a {
+          color: #1E88E5 !important;
+          word-wrap: break-word;
+        }
+
+        a {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .label-padding {
+    padding-left: 27px;
+  }
+
+  .input-padding {
+    padding-left: 22px;
+  }
+
+  .password-field {
+    opacity: 0.7;
+  }
+
+  .register-logo {
+    width: 100%;
+  }
+
+  .reverse-cont {
+    flex-flow: unset;
+  }
+
+  .register {
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      background-color: #F7F7F7;
+      padding-top: 20px;
+
+      .reg-cont {
+        border-radius: 5px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.200181);
+        padding: 30px 20px;
+        background-color: #fff;
+
+        .mat-accent {
+          border: none !important;
+        }
+
+        .mat-checkbox {
+          margin-right: 10px;
+        }
+
+        .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+          background-color: #1E88E5;
+        }
+
+        .mat-checkbox-inner-container {
+          width: 17px;
+          height: 17px;
+        }
+
+        .mat-checkbox-layout .mat-checkbox-label {
+          line-height: 17px;
+          color: #999;
+          font-size: .9em;
+        }
+
+        .mat-checkbox-frame {
+          border: 2px solid rgba(0, 0, 0, 0.54);
+        }
+      }
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #1976D2;
+      color: #fff;
+      font-size: 25px;
+      line-height: 19px;
+      padding: 20px 20px 20px 100px;
+
+      .doctor-sp {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 3rem;
+
+        .sp-digit {
+          position: relative;
+
+          span {
+            &:last-child {
+              position: absolute;
+              right: 0;
+            }
+          }
+        }
+      }
+
+      .already {
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .small-doc {
+        margin: 1.8rem 0;
+
+        p {
+          margin-bottom: 15px;
+        }
+      }
+
+      .log-in-but {
+        width: 140px;
+        height: 50px;
+        background-color: transparent;
+        color: #fff !important;
+        border: 2px solid #fff;
+        border-radius: 0.5rem !important;
+      }
+    }
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      & > {
+        button {
+          width: 140px;
+          background: transparent;
+          color: white;
+          border-radius: 0.5rem !important;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 767px) {
+    .container {
+      max-width: none !important;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 540px !important;
+  }
+  .register-right {
+    display: none;
+  }
+  .reverse-cont {
+    flex-flow: column-reverse !important;
+  }
+  .full-height {
+    height: auto;
+  }
+
+  .form-in {
+    flex-direction: column;
+    align-items: flex-start !important;
+
+    .label-fields {
+      margin-bottom: 10px;
+    }
+  }
+}

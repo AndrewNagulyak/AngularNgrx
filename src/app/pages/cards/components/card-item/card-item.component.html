@@ -1,0 +1,9 @@
+Card-Item
+{{card.title}}
+
+<button (click)="editCard()">edit</button>
+
+<form *ngIf="isEdite" [formGroup]="cardForm">
+  <input formControlName="title">
+  <button (click)="save()">Save</button>
+</form>

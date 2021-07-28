@@ -1,0 +1,114 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+$app-palette: (
+  50: #e8f4fd,
+  100: #c6e3fa,
+  200: #a1d1f6,
+  300: #7bbff2,
+  400: #5eb1f0,
+  500: #42a3ed,
+  600: #3c9beb,
+  700: #3391e8,
+  800: #2b88e5,
+  900: #1d77e0,
+  A100: #ffffff,
+  A200: #e3efff,
+  A400: #b0d2ff,
+  A700: #96c3ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$app-primary: mat-palette($app-palette);
+$app-accent: mat-palette($app-palette, A100);
+
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@include angular-material-theme($app-theme);
+
+.mat-raised-button {
+  border-radius: 2rem !important;
+  font-size: 1rem;
+  &.mat-primary > span {
+    color: white;
+    font-size: 1rem !important;
+    & > mat-icon {
+      color: white;
+    }
+  }
+  & > span {
+    color: $gray500;
+  }
+}
+
+.mat-raised-button {
+  min-width: 148px !important;
+  line-height: 48px !important;
+  &:hover {
+    border: none !important;
+  }
+}
+
+.mat-accent {
+  border: 1px solid $gray500 !important;
+}
+
+mat-select,
+app-select {
+  font-size: 1rem !important;
+  .mat-select-value,
+  .mat-select-placeholder {
+    color: $gray500 !important;
+  }
+  & .mat-select-arrow-wrapper {
+    position: relative;
+  }
+  & .mat-select-arrow {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    &:before {
+      position: absolute;
+      top: -1px;
+      right: 2px;
+      content: url("~assets/svg/arrow-down.svg");
+    }
+  }
+}
+
+.add-panel {
+  margin-top: 34px !important;
+  border: 1px solid $gray300 !important;
+  margin-left: 14px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  border-bottom-right-radius: 1rem !important;
+  border-bottom-left-radius: 1rem !important;
+  box-shadow: none !important;
+  transform: none !important;
+  & mat-option.mat-option {
+    padding: 0 5px !important;
+    border-bottom: 1px solid $gray200;
+    &:hover {
+      background: $gray200 !important;
+    }
+  }
+  & mat-option.mat-option.mat-active {
+    background: transparent;
+  }
+}

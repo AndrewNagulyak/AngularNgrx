@@ -1,0 +1,17 @@
+<header [ngClass]="transparent ? 'header-top' : ''" class="header">
+  <div class="header-buttons">
+    <button [routerLink]="'/boards'" class="header-buttons_boards">
+      boards
+    </button>
+    <button [routerLink]="'/chat'" class="header-buttons_boards">
+      chat
+    </button>
+    {{transparent}}
+  </div>
+  <div class="header-profile">
+    <div (click)="toggleInfo()" class="header-profile__button">A</div>
+    <div *ngIf="isOpen" class="header-profile__info-popup">
+      <app-profile-info></app-profile-info>
+    </div>
+  </div>
+</header>

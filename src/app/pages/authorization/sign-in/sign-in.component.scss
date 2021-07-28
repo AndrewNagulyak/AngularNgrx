@@ -1,0 +1,128 @@
+
+app-sign-in {
+  background: white;
+  height: 100vh;
+
+  width: 100%;
+
+  .intl-tel-input, .iti {
+    width: 100%;
+  }
+
+  .intl-tel-input.allow-dropdown .flag-container:hover .selected-flag {
+    background-color: #fff;
+  }
+
+  .intl-tel-input.separate-dial-code .selected-flag {
+    background-color: #fff;
+  }
+
+  .custom {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  .label-fields {
+    color: rgba(0,0,0,0.54);
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  .login-title {
+    text-align: center;
+  }
+
+  .submit-button {
+    background: #3f6bae;
+  }
+
+  .cancel-button {
+    border: 1px solid gray;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+  }
+
+  .label-padding {
+    padding-left: 27px;
+  }
+
+  .input-padding {
+    padding-left: 22px;
+  }
+
+  .password-field {
+    opacity: 0.7;
+  }
+
+  .login-logo {
+    width: 100%;
+  }
+
+  .sign-in {
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+    }
+    &__links {
+      display: flex;
+      justify-content: space-between;
+      opacity: 0.6;
+      font-size: 0.7rem;
+      & > a {
+        color: #3f6bae;
+      }
+    }
+    &__buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 4rem;
+      & > {
+        button {
+          width: 140px;
+          background: transparent;
+          border: 1px solid white;
+          color: white;
+          border-radius: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+//@media screen and (min-width: 1200px) {
+//  .container {
+//    max-width: 1600px;
+//  }
+//}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 540px !important;
+  }
+  .sign-in-right {
+    display: none;
+  }
+
+  .sign-in-container {
+    height: auto;
+    flex-flow: column-reverse;
+    & > .sign-in-right > img{
+      width: 50vw;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+}

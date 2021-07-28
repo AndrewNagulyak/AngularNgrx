@@ -1,0 +1,10 @@
+<div class="boards-container">
+  <div class="boards-last">
+    <app-boards-list [boards]="lastBoards" [title]="'Last boards'"></app-boards-list>
+  </div>
+  <div class="boards-all">
+    <app-boards-list [hasPaginator]="true" (pageChange)="pageChange($event)"
+                     [page]="page" [pageLimit]="pageLimit" [totalCount]="totalCount"
+                     [boards]="allBoards" [title]="'All boards'" [canCreate]="true"></app-boards-list>
+  </div>
+</div>

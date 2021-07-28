@@ -1,0 +1,43 @@
+<div class="board-container"
+     [ngStyle]="{'background' : (board | async)?.imgUrl ? 'url('+(board | async)?.imgUrl+')' : (board | async)?.color}">
+  <div class="board">
+    <div class="board-menu">
+      <div *ngFor="let card of (board | async)?.cards; let i = index" class="board-card">
+        <!--        <div (click)="editCard(i,$event)" *ngIf="!(isEditMode && i === selectedCardIndex)" class="board-card__title">-->
+        <!--          {{card.title}}-->
+        <!--        </div>-->
+        <input (click)="stopProp($event)" #cardInput (focusout)="focusOutFunction(card,cardInput.value)"
+               [value]="card.title"
+               class="board-card__title list-name-input"
+               placeholder="Ввести заголовок списка"
+               autocomplete="off">
+        <div (click)="stopProp($event)" class="board-card__task-wrapper">
+          <div *ngFor="let task of card.tasks; let i = index" class="board-task">
+            {{task.title}}
+          </div>
+          <div (click)="changeTaskMode(card.id,$event)" *ngIf="!(isEditMode && i === selectedCardIndex)"
+               class="list-name-input board-card__input">+
+            Добавить картчоку
+          </div>
+          <textarea [(ngModel)]="taskTitle" *ngIf="isEditMode  && card.id === selectedCardIndex" class="list-name-input"
+                    placeholder="Ввести заголовок списка"
+                    autocomplete="off"></textarea>
+          <div *ngIf="isEditMode  && card.id === selectedCardIndex" class="list-name-input-wrapper">
+            <button (click)="addNewTask($event)" class="add-button">Добавить список</button>
+          </div>
+        </div>
+      </div>
+      <div (click)="changeMode($event)" class="board-menu__item" [ngClass]="isAddMode ? 'add-mode' : 'display-mode'">
+        <span *ngIf="!isAddMode">
+          + Добавить список
+        </span>
+        <input [(ngModel)]="cardTitle" *ngIf="isAddMode" class="list-name-input" placeholder="Ввести заголовок списка"
+               autocomplete="off">
+        <div *ngIf="isAddMode" class="list-name-input-wrapper">
+          <button (click)="addNewCard($event)" class="add-button">Добавить список</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
