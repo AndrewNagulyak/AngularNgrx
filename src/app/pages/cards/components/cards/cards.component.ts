@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {CardsApiService} from '../../../../core/api/cards-api.service';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../../reducers';
-import {MatPaginator} from '@angular/material/paginator';
 import {CardsDataSource} from '../../models/cards.datasource';
 import {PaginationParams} from '../../../../shared/models/pagination-wrapper';
 
@@ -20,11 +19,10 @@ export class CardsComponent implements OnInit {
   dataSource: CardsDataSource;
   nextPage = 0;
   pageSize = 3;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
   ngOnInit(): void {
-    this.dataSource = new CardsDataSource(this.store, this.paginator);
+    this.dataSource = new CardsDataSource(this.store);
 
     const initialPage: PaginationParams = {
       page: 1,

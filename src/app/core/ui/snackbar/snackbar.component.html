@@ -1,0 +1,18 @@
+<div class="snack-bar-container" [@openClose]="isOpen ? 'open': 'closed'"
+     [ngClass]="{'red': type=== 'error', 'green': type === 'success', 'info': type === 'info'}">
+  <div class="snack-bar-icon-error" *ngIf="type==='error'">
+    <app-nh-icon>warning_white</app-nh-icon>
+  </div>
+  <div class="snack-bar-icon-success" *ngIf="type==='success'">
+    <app-nh-icon>check_white</app-nh-icon>
+  </div>
+  <div class="snack-bar-icon-info" *ngIf="type==='info'">
+    <app-nh-icon>info_white</app-nh-icon>
+  </div>
+  <div class="snack-bar-text">
+    <span>{{message}}</span>
+  </div>
+  <div class="rbi-icon-close" *ngIf="closeButton" (click)="closeSnackBar()">
+    <app-nh-icon>close</app-nh-icon>
+  </div>
+</div>

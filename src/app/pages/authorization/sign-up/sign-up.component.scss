@@ -1,244 +1,187 @@
-
-app-sign-up {
-  background: white;
-  height: 100vh;
-  width: 100%;
-  overflow:auto;
+@import "../../../../styles/variables";
 
 
-  ngx-intl-tel-input {
-    width: 100%;
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  color: $gray;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.form {
+  > div:last-child {
+    margin: 0px;
   }
 
-  .intl-tel-input, .iti {
-    width: 100%;
-  }
+  padding: 30px;
+  box-sizing: border-box;
+  z-index: 15;
+  position: relative;
+  background: $white;
+  width: $max-width;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba($black, .1);
+  overflow: hidden;
 
-  .intl-tel-input.allow-dropdown .flag-container:hover .selected-flag {
-    background-color: #fff;
-  }
-
-  .intl-tel-input.separate-dial-code .selected-flag {
-    background-color: #fff;
-  }
-
-  .custom {
-    background-color: #FBFCFD;
-    width: 100%;
-    height: 38px;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-
-  .label-fields {
-    width: 25%;
-    font-size: 11px;
-    font-weight: bold;
-  }
-
-  .register-title {
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .reg-sub {
-    color: rgba(0, 0, 0, 0.54);
-    text-align: center;
-  }
-
-  .cancel-button {
-    border: 1px solid;
-  }
-
-  .register-form {
+  &-sub-buttons {
     display: flex;
-    flex-direction: column;
-    margin-top: 3rem;
-
-    .form-in {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .error_pass {
-      color: red;
-      margin-bottom: 15px;
-    }
-
-    .form-pr {
-      display: flex;
-
-      .privacy {
-        span, a {
-          color: #1E88E5 !important;
-          word-wrap: break-word;
-        }
-
-        a {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  .label-padding {
-    padding-left: 27px;
-  }
-
-  .input-padding {
-    padding-left: 22px;
-  }
-
-  .password-field {
-    opacity: 0.7;
-  }
-
-  .register-logo {
     width: 100%;
+    justify-content: space-between;
+    gap: 20px;
   }
 
-  .reverse-cont {
-    flex-flow: unset;
-  }
 
-  .register {
-    &-left {
+  &-group {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 28px;
+
+
+    label {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      background-color: #F7F7F7;
-      padding-top: 20px;
+      margin: 0 0 10px;
+      color: $gray;
+      font-size: 12px;
+      font-weight: $semibold;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .2em;
 
-      .reg-cont {
-        border-radius: 5px;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.200181);
-        padding: 30px 20px;
-        background-color: #fff;
+      .two & {
+        color: $white;
+      }
+    }
 
-        .mat-accent {
-          border: none !important;
-        }
+    input {
+      outline: none;
+      display: block;
+      background: rgba($black, 0.1);
+      width: 100%;
+      border: 0;
+      border-radius: 4px;
+      box-sizing: border-box;
+      padding: 12px 20px;
+      color: $gray;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: $semibold;
+      line-height: inherit;
+      transition: 0.3s ease;
 
-        .mat-checkbox {
-          margin-right: 10px;
-        }
+      &:focus {
+        color: $dark-gray;
+      }
 
-        .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-          background-color: #1E88E5;
-        }
+      .two & {
+        color: $white;
 
-        .mat-checkbox-inner-container {
-          width: 17px;
-          height: 17px;
-        }
-
-        .mat-checkbox-layout .mat-checkbox-label {
-          line-height: 17px;
-          color: #999;
-          font-size: .9em;
-        }
-
-        .mat-checkbox-frame {
-          border: 2px solid rgba(0, 0, 0, 0.54);
+        &:focus {
+          color: $white;
         }
       }
     }
-    &-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: #1976D2;
-      color: #fff;
-      font-size: 25px;
-      line-height: 19px;
-      padding: 20px 20px 20px 100px;
 
-      .doctor-sp {
-        display: flex;
-        align-items: flex-end;
-        margin-bottom: 3rem;
+    .form-button {
+      outline: none;
+      background: $accent;
+      width: 100%;
+      border: 0;
+      border-radius: 4px;
+      padding: 12px 20px;
+      color: $white;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: $semibold;
+      line-height: inherit;
+      text-transform: uppercase;
+      cursor: pointer;
 
-        .sp-digit {
-          position: relative;
-
-          span {
-            &:last-child {
-              position: absolute;
-              right: 0;
-            }
-          }
-        }
+      &:hover {
+        box-shadow: 0 0 6px $accent;
       }
 
-      .already {
-        font-weight: bold;
-        margin-bottom: 15px;
-      }
-
-      .small-doc {
-        margin: 1.8rem 0;
-
-        p {
-          margin-bottom: 15px;
-        }
-      }
-
-      .log-in-but {
-        width: 140px;
-        height: 50px;
-        background-color: transparent;
-        color: #fff !important;
-        border: 2px solid #fff;
-        border-radius: 0.5rem !important;
+      .two & {
+        background: $white;
+        color: $accent;
       }
     }
-    &__buttons {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-      & > {
-        button {
-          width: 140px;
-          background: transparent;
-          color: white;
-          border-radius: 0.5rem !important;
-        }
+
+    .form-remember {
+      font-size: 12px;
+      font-weight: $regular;
+      letter-spacing: 0;
+      text-transform: none;
+
+      input[type='checkbox'] {
+        display: inline-block;
+        width: auto;
+        margin: 0 10px 0 0;
       }
     }
-  }
 
-  @media screen and (min-width: 767px) {
-    .container {
-      max-width: none !important;
+    .form-recovery {
+      color: $accent;
+      font-size: 12px;
+      margin-bottom: 10px;
+      text-decoration: none;
     }
   }
 }
 
-@media screen and (max-width: 767px) {
-  .container {
-    max-width: 540px !important;
-  }
-  .register-right {
-    display: none;
-  }
-  .reverse-cont {
-    flex-flow: column-reverse !important;
-  }
-  .full-height {
-    height: auto;
+
+.google-btn {
+  min-width: 195px;
+  line-height: $base-line-height;
+  cursor: pointer;
+  background-color: $accent;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
+
+  .google-icon-wrapper {
+    position: absolute;
+    margin-top: 3px;
+    margin-right: 8px;
+    margin-left: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: $white;
   }
 
-  .form-in {
-    flex-direction: column;
-    align-items: flex-start !important;
-
-    .label-fields {
-      margin-bottom: 10px;
-    }
+  .google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 18px;
+    height: 18px;
   }
+
+  .btn-text {
+    float: right;
+    margin: 11px 11px 11px 11px;
+    color: $white;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 6px $accent;
+  }
+}
+
+.form-row {
+  display: flex;
+  width: 100%;
+  gap: 50px;
 }

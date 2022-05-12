@@ -1,70 +1,66 @@
 .container {
-  max-width: 1200px;
-  margin: 100px auto;
+  display: flex;
+  height: calc(100% - 110px);
+  width: 800px;
+  box-shadow: none;
+  border: 1px solid #e1e1e1;
+  margin: auto;
+  margin-top: 30px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+
+  .select-connection {
+    overflow-y: scroll;
+    width: 40%;
+    border-right: 1px solid #e1e1e1;
+    .friend {
+      border-bottom: 1px solid #e1e1e1;
+      border-left: 4px solid transparent;
+      &:hover {
+        background-color: #e1e1e1;
+        cursor: pointer;
+      }
+    }
+    .selected-conversation {
+      border-left: 4px solid green;
+    }
+  }
+
+  .chat {
+    width: 60%;
+    position: relative;
+    .chat-messages {
+      overflow-y: scroll;
+      height: calc(100% - 260px);
+      border-bottom: 1px solid #e1e1e1;
+    }
+    form {
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      bottom: 0;
+      ion-textarea {
+        height: 110px;
+      }
+    }
+  }
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  margin-bottom: 2rem;
+.top-panel {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-li {
-  margin-bottom: .5rem;
-  padding-bottom: .5rem;
-  border-bottom: 1px #eee solid;
-}
-
-li:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: 0 none;
-  overflow: hidden;
-}
-
-form, .texts {
-  align-self: start;
-}
-
-textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-button {
-  padding: 10px 15px;
-  float: right;
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: default;
-}
-
-.counter {
-  text-align: center;
-  font-size: 24px;
-  vertical-align: middle;
-}
-
-.remove {
-  display: block;
-  height: 16px;
-  width: 16px;
-  cursor: pointer;
-  float: right;
-  line-height: 16px;
-  text-align: center;
-  color: red;
-  font-size: 12px;
+  border-bottom: 1px solid #e1e1e1;
+  .heading {
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .friend-name-role {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
 }

@@ -1,17 +1,21 @@
-import { CardListComponent } from './components/cards/card-list/card-list.component';
-import { CardComponent } from './components/cards/card/card.component';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
+import {IonicModule} from '@ionic/angular';
+import {SwiperComponent} from './components/swiper/swiper.component';
+import {SwiperModule} from 'swiper/angular';
+
 
 
 @NgModule({
-  declarations: [HomeComponent, CardComponent, CardListComponent],
+  declarations: [HomeComponent, SwiperComponent],
   imports: [
+    SwiperModule,
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    IonicModule
   ]
 })
 export class HomeModule { }

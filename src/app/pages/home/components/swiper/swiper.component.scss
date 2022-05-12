@@ -1,0 +1,53 @@
+
+.my-swiper {
+  margin-top: 40px;
+}
+
+.slider {
+  display: flex;
+  padding: 20px 80px;
+  width: 100%;
+  flex-direction: column;
+  top: 0;
+  position: absolute;
+}
+
+.slide-text {
+  display: flex;
+  margin-bottom: 50px;
+  flex-direction: column;
+}
+
+.relative {
+  position: relative;
+}
+
+ul {
+  text-align: left;
+}
+
+li {
+  text-align: left;
+  margin-bottom: 20px
+}
+
+.bg-yellow {
+  background-color: yellow;
+}
+.swiper-title {
+  margin-bottom: 8px;
+}
+
+.transition {
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.active-slide {
+  background-color: green;
+  color: #fff;
+}
+
+.bg-blue {
+  background-color: blue;
+  color: #fff;
+}

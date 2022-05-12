@@ -1,0 +1,28 @@
+{
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "remember": "Remember me",
+    "sign": "Sign In",
+    "signGoogle": "Sign In Via Google",
+    "signUp": "Sign Up",
+    "name" : "Name",
+    "surname": "Surname",
+    "retype": "Retype Password",
+    "haveAcc": "Have account ?",
+    "create": "Create client",
+    "forgot": "Forgot Password ?"
+  },
+  "profile": {
+    "account": "Account",
+    "exit": "Exit",
+    "changeLanguage": "Change language"
+  },
+  "pages": {
+    "home": "Home",
+    "notifications": "Notifications",
+    "briefcase": "Posts",
+    "people": "Profile",
+    "chatbox-ellipses": "Messaging"
+  }
+}

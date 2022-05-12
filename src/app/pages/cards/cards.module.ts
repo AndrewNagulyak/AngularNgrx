@@ -9,8 +9,6 @@ import {StoreModule} from '@ngrx/store';
 import {cardsReducer} from './cards.reducer';
 import {CardsResolver} from './services/cards.resolver';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -20,10 +18,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CardsRoutingModule,
     StoreModule.forFeature('cards', cardsReducer),
     EffectsModule.forFeature([CardsEffects]),
-    ReactiveFormsModule,
-    MatTableModule,
-    MatPaginatorModule
-  ],
+    ReactiveFormsModule],
   providers: [CardsResolver]
 })
 export class CardsModule {

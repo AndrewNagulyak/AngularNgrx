@@ -4,7 +4,6 @@ import {BoardsComponent} from './components/boards/boards.component';
 import {BoardsListComponent} from './components/boards-list/boards-list.component';
 import {BoardsRoutingModule} from './boards.routing-module';
 import { CreateBoardPopupComponent } from './components/create-board-popup/create-board-popup.component';
-import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { BoardsEffects } from './store/boards.effects';
@@ -18,10 +17,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [BoardsComponent, BoardsListComponent, CreateBoardPopupComponent, BoardDetailsComponent],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     BoardsRoutingModule,
     FormsModule,
-    NgxPaginationModule,
-    SweetAlert2Module,
+
     ReactiveFormsModule,
     StoreModule.forFeature('boards', boardsReducer),
     EffectsModule.forFeature([BoardsEffects])

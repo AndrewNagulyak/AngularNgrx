@@ -7,13 +7,12 @@ import {RequestAllCardsAction} from '../cards.actions';
 import {selectAllCardsPage} from '../cards.selectors';
 import {tap} from 'rxjs/operators';
 import {PaginationParams} from '../../../shared/models/pagination-wrapper';
-import {MatPaginator} from '@angular/material/paginator';
 
 export class CardsDataSource implements DataSource<CardModel> {
   private cardsSubject = new BehaviorSubject<CardModel[]>([]);
   totalCount = 0;
 
-  constructor(private store: Store<AppState>, private paginator: MatPaginator) {
+  constructor(private store: Store<AppState>) {
 
   }
 

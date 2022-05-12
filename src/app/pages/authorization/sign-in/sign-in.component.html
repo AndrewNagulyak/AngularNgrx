@@ -1,41 +1,49 @@
-<div class="container full-height">
-  <div class="row full-height sign-in-container">
-    <div class="sign-in-left offset-md-1 col-md-5 offset-sm-0 col-sm-12">
-      <h1 class="title login-title"></h1>
-      <form #f="ngForm" [formGroup]="phoneForm" class="login-form">
-        <div class="mb-4">
-          <mat-label class="label-fields">Telephone</mat-label>
-          <ngx-intl-tel-input
-            cssClass="custom"
-            [preferredCountries]="preferredCountries"
-            [enableAutoCountrySelect]="false"
-            [enablePlaceholder]="true"
-            [searchCountryFlag]="true"
-            [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
-            [selectFirstCountry]="true"
-            [selectedCountryISO]="CountryISO.Ukraine"
-            [maxLength]="15"
-            [phoneValidation]="true"
-            [separateDialCode]="separateDialCode"
-            name="phone" formControlName="phone">
-          </ngx-intl-tel-input>
-        </div>
-        <div class="mb-3">
-          <mat-label class="label-fields">Password</mat-label>
-          <input type="password" class="input-padding custom" formControlName="password" minlength="4">
-        </div>
-        <div class="sign-in__links">
-          <a (click)="goToSignUp()">New user</a>
-          <a href="">Forgot password?</a>
-        </div>
-        <div class="sign-in__buttons">
-          <button mat-raised-button type="button" class="cancel-button" (click)="f.reset()">Cancel</button>
-          <button mat-raised-button color="primary" [disabled]="!f.form.valid" (click)="logIn(f.form.controls)"  class="submit-button">OK</button>
-        </div>
-      </form>
+<div class="content">
+  <form [ngClass]="isSent ? 'touched' : ''"
+        class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">{{'auth.email' | translate}}</label>
+      <input
+        formControlName="email"
+        name="email"
+        type="email"
+        required
+        id="email">
+      <p class="help-block" *ngIf="isSent && loginForm.get('email').hasError('required')">Email must be required</p>
+      <p class="help-block" *ngIf="!loginForm.get('email').hasError('required')&& isSent && loginForm.get('email').hasError('email')">Email not correct</p>
     </div>
-    <div class="col-md-6 sign-in-right">
-      <img class="login-logo" src="./../../../assets/img/login-image.png" alt="">
+    <div class="form-group">
+      <label for="password">{{'auth.password' | translate}}</label>
+      <input
+        formControlName="password"
+        name="password"
+        type="password"
+        required
+        id="password">
+      <p class="help-block" *ngIf="isSent && loginForm.get('password').hasError('required')">Password must be required</p>
     </div>
-  </div>
+    <div class="form-group">
+      <label class="form-remember">
+        <input formControlName="isSave" type="checkbox"> {{'auth.remember' | translate}}
+      </label>
+      <a href="#" class="form-recovery">
+        {{'auth.forgot' | translate}}
+      </a>
+    </div>
+    <div class="form-group">
+      <button class="form-button create-account">{{'auth.sign' | translate}}</button>
+    </div>
+    <div class="form-group">
+      <div class="form-sub-buttons">
+        <div class="google-btn" (click)="googleAuth()">
+          <div class="google-icon-wrapper">
+            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+          </div>
+          <p class="btn-text"><b>{{'auth.signGoogle' | translate}}</b></p>
+        </div>
+        <button class="form-button" [routerLink]="'/authorization/register'">{{'auth.signUp' | translate}}</button>
+      </div>
+    </div>
+  </form>
 </div>
+

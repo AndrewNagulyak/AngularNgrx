@@ -1,0 +1,66 @@
+<ion-header class="ion-container ion-no-border">
+  <ion-toolbar>
+    <div class="toolbar-wrapper">
+      <ion-buttons slot="start" class="ion-no-padding">
+        <ion-button style="cursor: pointer" [routerLink]="['/home']">
+          <ion-icon
+            color="primary"
+            class="header-logo"
+            name="logo-angular"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-end">
+          <ion-col *ngFor="let col of cols"
+                   routerLinkActive="active"
+                   style="cursor: pointer"
+                   [routerLink]="col.route"
+                   size="auto"
+          >
+            <ion-icon [name]="col.name"></ion-icon>
+            <ion-badge *ngIf="col.bage"
+                       color="danger"
+                       style="
+                position: absolute;
+                margin-left: -10px;
+                margin-top: -5px;
+                height: 16px;
+                width: 16px;
+                border-radius: 9999px;
+              "
+            >
+              {{col.bage}}
+            </ion-badge>
+            <div>{{'pages.' + col.name | translate}}</div>
+          </ion-col>
+          <ion-col
+            style="cursor: pointer"
+            class="popover-menu"
+            size="auto"
+            (click)="openDialog($event)"
+          >
+            <ion-avatar>
+              <ion-img
+              ></ion-img>
+            </ion-avatar>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              Me
+              <ion-icon
+                style="font-size: 16px"
+                name="caret-down-outline"
+              ></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>

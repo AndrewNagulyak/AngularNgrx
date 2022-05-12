@@ -1,3 +1,5 @@
-<app-header [transparent]="transparent" *ngIf="showMenu"></app-header>
-<router-outlet></router-outlet>
-<app-footer *ngIf="showMenu"  ></app-footer>
+<ion-app>
+  <app-header *ngIf="isLogged$ | async"></app-header>
+  <ion-router-outlet animated="false"></ion-router-outlet>
+  <app-footer *ngIf="isLogged$ | async"></app-footer>
+</ion-app>

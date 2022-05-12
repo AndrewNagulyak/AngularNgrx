@@ -1,17 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppGuard} from './core/guards/app.guard';
+import {HomeComponent} from './pages/home/home.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   pathMatch: 'full',
-  //   redirectTo: 'home',
-  //   canActivate: [AppGuard]
-  // },
+
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
+    component: HomeComponent,
     canActivate: [AppGuard]
   },
   {
@@ -25,14 +21,23 @@ const routes: Routes = [
     canActivate: [AppGuard]
   },
   {
-    path: 'chat',
+    path: 'chatting',
     loadChildren: () => import('./pages/chat/chat.module').then(m => m.ChatModule),
     canActivate: [AppGuard]
   },
   {
     path: 'authorization',
     loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
-  }
+  },
+  {
+    path: 'posts',
+    loadChildren: () => import('./pages/posts/posts.module').then(m => m.PostsModule)
+  },
+  {
+    path: '**',
+    component: HomeComponent,
+    canActivate: [AppGuard]
+  },
 ];
 
 @NgModule({

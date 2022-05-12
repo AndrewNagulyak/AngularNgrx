@@ -1,63 +1,62 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {CountryISO, SearchCountryField} from 'ngx-intl-tel-input';
-import {Router} from '@angular/router';
-import {SignInApiService} from './datasource/sign-in.api-service';
-import {AppService} from '../../../app.service';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../reducers';
-import {Login} from '../authorization.actions';
+import {LogIn, LogInGoogle, LogInGoogleSuccess, Logout} from '../authorization.actions';
+import {selectAuthState} from '../auth.selectors';
+import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [SignInApiService]
+  styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit, OnDestroy {
+export class SignInComponent implements OnInit {
+  getState: Observable<any>;
+  isSent = false;
+  errorMessage: string | null;
 
-  separateDialCode = true;
-  SearchCountryField = SearchCountryField;
-  CountryISO = CountryISO;
-  preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom, CountryISO.Ukraine];
-  phoneForm = new FormGroup({
-    phone: new FormControl('680801313', [Validators.required]),
-    password: new FormControl('Hsdyt5858', [Validators.required])
+  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) {
+    this.getState = this.store.select(selectAuthState);
+  }
+
+  loginForm = new FormGroup({
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    isSave: new FormControl(true),
+    password: new FormControl(null, [Validators.required])
   });
 
-  constructor(
-    private signInBase: SignInApiService,
-    private router: Router,
-    private store: Store<AppState>,
-    private appService: AppService,
-  ) {
+  onSubmit() {
+    this.isSent = true;
+    if (this.loginForm.valid) {
+      const payload = {
+        email: this.loginForm.controls.email.value,
+        password: this.loginForm.controls.password.value,
+        isSave: this.loginForm.controls.isSave.value
+      };
+      this.store.dispatch(new LogIn(payload));
+    }
   }
 
   ngOnInit(): void {
-    console.log('auth');
-  }
-
-  ngOnDestroy(): void {
-  }
-
-  logIn(form) {
-    const params = {
-      username: `${form.phone.value.internationalNumber.replace(/\s+/g, '')}`,
-      password: form.password.value
-    };
-    this.signInBase.logIn(params).subscribe(data => {
-      this.store.dispatch(new Login({data}));
-    }, error => {
+    this.store.dispatch(new Logout(false));
+    this.activatedRoute.queryParams.subscribe((param) => {
+      console.log(param);
+      if (param.success) {
+        this.store.dispatch(new LogInGoogleSuccess({
+          token: param.token,
+          displayName: param.displayName,
+          email: param.email
+        }))
+      }
+    })
+    this.getState.subscribe((state) => {
+      this.errorMessage = state ? state.errorMessage : '';
     });
   }
 
-  // notifyMe() {
-  //   this.notificationService.notify('Notification granted');
-  // }
-
-  goToSignUp() {
-    this.router.navigate(['authorization/register']);
+  googleAuth() {
+    this.store.dispatch(new LogInGoogle());
   }
-
 }
